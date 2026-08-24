@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!-- Bill number -->
+
+        <TextView
+            android:id="@+id/tvHistoryBillNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bill No.: 1"
+            android:textColor="#1A237E"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+
+        <!-- Customer -->
+
+        <TextView
+            android:id="@+id/tvHistoryCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customer: Raj"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp" />
+
+
+        <!-- Date -->
+
+        <TextView
+            android:id="@+id/tvHistoryDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date: 24-08-2026"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:layout_marginTop="3dp" />
+
+
+        <!-- Total -->
+
+        <TextView
+            android:id="@+id/tvHistoryTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: ₹680.00"
+            android:textColor="#00897B"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
+
+
+        <!-- View button -->
+
+        <Button
+            android:id="@+id/btnViewBill"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="VIEW BILL"
+            android:textStyle="bold"
+            android:backgroundTint="#1565C0"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btnDeleteBill"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="DELETE BILL"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D32F2F"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

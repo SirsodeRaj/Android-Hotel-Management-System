@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F7FA">
+
+
+    <!-- Header -->
+
+    <TextView
+        android:id="@+id/tvBillHistoryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1A237E"
+        android:gravity="center"
+        android:text="BILL HISTORY"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+
+    <!-- Description -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Previously Saved Bills"
+        android:textColor="#333333"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="8dp" />
+
+
+    <!-- Bill list -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBillHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+
+    <!-- Empty message -->
+
+    <TextView
+        android:id="@+id/tvNoBills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No saved bills found."
+        android:textColor="#777777"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="30dp" />
+
+</LinearLayout>

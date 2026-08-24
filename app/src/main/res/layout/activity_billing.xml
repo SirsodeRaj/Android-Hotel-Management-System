@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA">
+
+    <!-- =========================
+         BILLING HEADER
+         ========================= -->
+
+    <TextView
+        android:id="@+id/tvBillingTitle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="#1A237E"
+        android:gravity="center"
+        android:text="BILLING"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- =========================
+         BILL INFORMATION
+         ========================= -->
+
+    <TextView
+        android:id="@+id/tvBillInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill Information"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvBillingTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp" />
+
+
+    <!-- Bill number -->
+
+    <TextView
+        android:id="@+id/tvBillNo"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="Bill No.: 1"
+        android:textColor="#333333"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvBillDate"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp" />
+
+
+    <!-- Bill date -->
+
+    <TextView
+        android:id="@+id/tvBillDate"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="Date"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
+        app:layout_constraintStart_toEndOf="@id/tvBillNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp" />
+
+
+    <!-- =========================
+         CUSTOMER INFORMATION
+         ========================= -->
+
+    <EditText
+        android:id="@+id/etCustomerName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="Customer Name"
+        android:inputType="textCapWords"
+        android:padding="12dp"
+        android:backgroundTint="#1A237E"
+        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/etMobileNo"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp" />
+
+
+    <EditText
+        android:id="@+id/etMobileNo"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="Mobile No."
+        android:inputType="phone"
+        android:maxLength="10"
+        android:padding="12dp"
+        android:backgroundTint="#1A237E"
+        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
+        app:layout_constraintStart_toEndOf="@id/etCustomerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp" />
+
+
+    <!-- =========================
+         DISH SECTION
+         ========================= -->
+
+    <TextView
+        android:id="@+id/tvDishSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Dish"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/etCustomerName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp" />
+
+
+    <!-- Search dish -->
+
+    <EditText
+        android:id="@+id/etDishSearch"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Search dish..."
+        android:inputType="text"
+        android:padding="12dp"
+        android:backgroundTint="#1A237E"
+        app:layout_constraintTop_toBottomOf="@id/tvDishSection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- Search results -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDishSearch"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:visibility="gone"
+        android:background="#FFFFFF"
+        android:padding="2dp"
+        app:layout_constraintTop_toBottomOf="@id/etDishSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="3dp" />
+
+
+    <!-- Selected dish -->
+
+    <TextView
+        android:id="@+id/tvSelectedDish"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="Selected Dish: None"
+        android:textColor="#333333"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvSelectedPrice"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- Selected price -->
+
+    <TextView
+        android:id="@+id/tvSelectedPrice"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="Price: ₹0.00"
+        android:textColor="#333333"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
+        app:layout_constraintStart_toEndOf="@id/tvSelectedDish"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- =========================
+         QUANTITY AND AMOUNT
+         ========================= -->
+
+    <EditText
+        android:id="@+id/etQuantity"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Quantity"
+        android:inputType="number"
+        android:padding="12dp"
+        android:backgroundTint="#1A237E"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvAmount"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="6dp" />
+
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:text="Amount: ₹0.00"
+        android:textColor="#333333"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
+        app:layout_constraintStart_toEndOf="@id/etQuantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="6dp" />
+
+
+    <!-- =========================
+         ADD TO CART
+         ========================= -->
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="ADD TO CART"
+        android:textStyle="bold"
+        android:backgroundTint="#2E7D32"
+        app:layout_constraintTop_toBottomOf="@id/etQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp" />
+
+
+    <!-- =========================
+         CART
+         ========================= -->
+
+    <TextView
+        android:id="@+id/tvCartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cart Items"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnAddToCart"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
+        app:layout_constraintBottom_toTopOf="@id/tvTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="5dp" />
+
+
+    <!-- =========================
+         TOTAL
+         ========================= -->
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="#E8EAF6"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:text="Total Bill: ₹0.00"
+        android:textColor="#1A237E"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp" />
+
+
+    <!-- =========================
+         BOTTOM BUTTONS
+         ========================= -->
+
+    <LinearLayout
+        android:id="@+id/buttonRow"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp">
+
+        <Button
+            android:id="@+id/btnDeleteItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="DELETE ITEM"
+            android:textStyle="bold"
+            android:backgroundTint="#C62828" />
+
+        <Button
+            android:id="@+id/btnSaveBill"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="SAVE BILL"
+            android:textStyle="bold"
+            android:backgroundTint="#1565C0"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
