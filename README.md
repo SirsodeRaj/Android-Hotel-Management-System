@@ -248,14 +248,6 @@ bill_details
 
 ---
 
-## ➕ Add Dish
-
-<!-- Replace with your actual screenshot -->
-
-![Add Dish](screenshots/add-dish.png)
-
----
-
 ## 🧾 Billing Screen
 
 <!-- Replace with your actual screenshot -->
@@ -272,27 +264,11 @@ bill_details
 
 ---
 
-## 💾 Saved Bill
-
-<!-- Replace with your actual screenshot -->
-
-![Saved Bill](screenshots/saved-bill.png)
-
----
-
 ## 📋 Bill History
 
 <!-- Replace with your actual screenshot -->
 
 ![Bill History](screenshots/bill-history.png)
-
----
-
-## 🧾 Bill Details
-
-<!-- Replace with your actual screenshot -->
-
-![Bill Details](screenshots/bill-details.png)
 
 ---
 
