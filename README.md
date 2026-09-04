@@ -226,65 +226,49 @@ bill_details
 
 ## 🔐 Login Screen
 
-<!-- Replace with your actual screenshot -->
-
-![Login Screen](screenshots/login.png)
+<img src="screenshots/login.png" alt="Login Screen" width="300">
 
 ---
 
 ## 🏠 Dashboard
 
-<!-- Replace with your actual screenshot -->
-
-![Dashboard](screenshots/dashboard.png)
+<img src="screenshots/dashboard.png" alt="Dashboard" width="300">
 
 ---
 
 ## 🍽️ Menu Management
 
-<!-- Replace with your actual screenshot -->
-
-![Menu Management](screenshots/menu-management.png)
+<img src="screenshots/menu-management.png" alt="Menu Management" width="300">
 
 ---
 
 ## 🧾 Billing Screen
 
-<!-- Replace with your actual screenshot -->
-
-![Billing Screen](screenshots/billing.png)
+<img src="screenshots/billing.png" alt="Billing Screen" width="300">
 
 ---
 
 ## 🛒 Cart / Selected Items
 
-<!-- Replace with your actual screenshot -->
-
-![Cart](screenshots/cart.png)
+<img src="screenshots/cart.png" alt="Cart" width="300">
 
 ---
 
 ## 📋 Bill History
 
-<!-- Replace with your actual screenshot -->
-
-![Bill History](screenshots/bill-history.png)
+<img src="screenshots/bill-history.png" alt="Bill History" width="300">
 
 ---
 
 ## 🗑️ Delete Bill Confirmation
 
-<!-- Replace with your actual screenshot -->
-
-![Delete Bill Confirmation](screenshots/delete-confirmation.png)
+<img src="screenshots/delete-confirmation.png" alt="Delete Bill Confirmation" width="300">
 
 ---
 
 ## 🖨️ Print Bill
 
-<!-- Replace with your actual screenshot -->
-
-![Print Bill](screenshots/print-bill.png)
+<img src="screenshots/print-bill.png" alt="Print Bill" width="300">
 
 ---
 
