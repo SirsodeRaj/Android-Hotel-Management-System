@@ -2,67 +2,63 @@
 
 An Android-based **Hotel Management System** developed using **Java and Android Studio**.
 
-The application provides a simple and user-friendly solution for managing hotel/restaurant menu items, billing, customers, and saved bills using a **local SQLite database**.
+The application is designed to simplify basic hotel/restaurant operations such as menu management, billing, cart management, bill history, bill details and bill printing.
+
+The project uses a **local SQLite database** for storing login, menu and billing-related data.
 
 ---
 
 ## 📱 Project Overview
 
-The Hotel Management System is designed to digitize basic hotel management operations.
+The **Hotel Management System** is an Android application developed to reduce manual work in hotel and restaurant billing operations.
 
-Instead of maintaining menu and billing information manually, the application allows the administrator to manage dishes, create bills, save bills, view previous bills, delete unwanted bills, and print bills using the Android printing system.
+The application provides an admin-based interface where the user can:
 
-The application uses **SQLite** for local data storage, making it possible to use the system without requiring a remote database server.
+- Login to the application
+- Manage menu items
+- Search dishes
+- Create customer bills
+- Add selected dishes to a cart
+- Calculate item and total amounts
+- Save generated bills
+- View previous bills
+- View complete bill details
+- Delete bills with confirmation
+- Print bills using the Android Print Framework
+
+The application uses **SQLite** as the local database, so no external database server is required.
 
 ---
 
 ## ✨ Features
 
-### 🔐 Login System
-- Admin login
-- Local SQLite-based authentication
-- Default administrator account
-- Simple and secure login interface
+### 🔐 Login
+- Admin login with SQLite authentication.
+
+### 🏠 Dashboard
+- Central dashboard with quick navigation.
 
 ### 🍽️ Menu Management
-- Add new dishes
-- View available dishes
-- Search dishes
-- Update dish information
-- Delete dishes
-- Store dish name and price locally
+- Add, search, update and delete dishes.
+- Store dish details in SQLite.
 
-### 🧾 Billing System
-- Enter customer details
-- Select dishes
-- Add dishes to cart
-- Set quantity
-- Automatically calculate item amount
-- Calculate total bill
-- Save bills locally
-- Generate unique bill numbers
+### 🧾 Billing
+- Enter customer details.
+- Select dishes, set quantity and calculate total.
+- Save generated bills.
+
+### 🛒 Cart
+- Manage selected items and quantities.
+- Calculate total amount.
 
 ### 📋 Bill History
-- View previously saved bills
-- Display:
-  - Bill number
-  - Customer name
-  - Date
-  - Total amount
-- Open complete bill details
+- View saved bills and bill details.
 
 ### 🗑️ Delete Bill
-- Delete unwanted bills
-- Confirmation dialog before deletion
-- Deletes both bill information and related bill items
-- Prevents accidental deletion
+- Delete bills with confirmation.
 
 ### 🖨️ Print Bill
-- Generate a printable bill
-- Android Print Framework integration
-- Print preview through Android's printing system
-- Allows selection of an available printer/print service
-- Suitable for compatible Wi-Fi printers
+- Print bills using Android Print Framework.
 
 ---
 
@@ -73,10 +69,10 @@ The application uses **SQLite** for local data storage, making it possible to us
 | Java | Application development |
 | Android Studio | Development environment |
 | XML | User interface design |
-| SQLite | Local database |
+| SQLite | Local data storage |
 | Android SDK | Android application development |
-| RecyclerView | Displaying lists |
-| Android Print Framework | Bill printing |
+| RecyclerView | Displaying lists of items and bills |
+| Android Print Framework | Printing bills |
 | Gradle | Build and dependency management |
 
 ---
@@ -84,145 +80,112 @@ The application uses **SQLite** for local data storage, making it possible to us
 ## 🗂️ Project Structure
 
 ```text
-Hotel-Management-System/
+Android-Hotel-Management-System/
 │
 ├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/
-│   │       │   └── com.example.hotelmanagementsystem/
-│   │       │       │
-│   │       │       ├── LoginActivity.java
-│   │       │       ├── DashboardActivity.java
-│   │       │       ├── MenuActivity.java
-│   │       │       ├── BillingActivity.java
-│   │       │       ├── BillHistoryActivity.java
-│   │       │       ├── BillDetailsActivity.java
-│   │       │       ├── BillPrintAdapter.java
-│   │       │       ├── DatabaseHelper.java
-│   │       │       ├── Bill.java
-│   │       │       ├── BillAdapter.java
-│   │       │       ├── Dish.java
-│   │       │       ├── DishAdapter.java
-│   │       │       ├── CartItem.java
-│   │       │       └── CartAdapter.java
-│   │       │
-│   │       ├── res/
-│   │       │   ├── layout/
-│   │       │   ├── drawable/
-│   │       │   ├── mipmap/
-│   │       │   └── values/
-│   │       │
-│   │       └── AndroidManifest.xml
-│   │
-│   └── build.gradle.kts
+│   └── src/
+│       └── main/
+│           ├── java/
+│           │   └── com/example/hotelmanagementsystem/
+│           │       │
+│           │       ├── LoginActivity.java
+│           │       ├── DashboardActivity.java
+│           │       ├── MenuActivity.java
+│           │       ├── BillingActivity.java
+│           │       ├── BillHistoryActivity.java
+│           │       ├── BillDetailsActivity.java
+│           │       ├── BillPrintAdapter.java
+│           │       ├── BillAdapter.java
+│           │       ├── DatabaseHelper.java
+│           │       └── SystemBarHelper.java
+│           │
+│           ├── res/
+│           │   ├── drawable/
+│           │   ├── layout/
+│           │   ├── mipmap/
+│           │   └── values/
+│           │
+│           └── AndroidManifest.xml
 │
-├── gradle/
+├── screenshots/
+│   ├── login.png
+│   ├── dashboard.png
+│   ├── menu-management.png
+│   ├── add-dish.png
+│   ├── billing.png
+│   ├── cart.png
+│   ├── saved-bill.png
+│   ├── bill-history.png
+│   ├── bill-details.png
+│   ├── delete-confirmation.png
+│   └── print-bill.png
+│
 ├── build.gradle.kts
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
 ├── settings.gradle.kts
+├── .gitignore
 └── README.md
 ````
-
----
-
-## 🗄️ Database Structure
-
-The application uses a local **SQLite database**.
-
-### Users Table
-
-Stores administrator login information.
-
-```text
-users
-│
-├── id
-├── username
-├── email
-└── password
-```
-
-### Dishes Table
-
-Stores menu/dish information.
-
-```text
-dishes
-│
-├── dish_id
-├── dish_name
-└── price
-```
-
-### Bills Table
-
-Stores the main information about each bill.
-
-```text
-bills
-│
-├── bill_no
-├── bill_date
-├── customer_name
-├── mobile_no
-└── total_bill
-```
-
-### Bill Details Table
-
-Stores individual items belonging to each bill.
-
-```text
-bill_details
-│
-├── id
-├── bill_no
-├── dish_name
-├── price
-├── quantity
-└── amount
-```
 
 ---
 
 ## 🔄 Application Workflow
 
 ```text
-                    ┌───────────────┐
-                    │     LOGIN     │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │   DASHBOARD   │
-                    └───────┬───────┘
-                            │
-             ┌──────────────┼──────────────┐
-             │              │              │
-             ▼              ▼              ▼
-      ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-      │    MENU     │ │   BILLING   │ │ BILL HISTORY│
-      │ MANAGEMENT  │ │             │ │             │
-      └──────┬──────┘ └──────┬──────┘ └──────┬──────┘
-             │               │               │
-             ▼               ▼               ▼
-      Add / Update /     Create Bill      View Bill
-      Delete / Search         │               │
-             │                ▼               ▼
-             │           Save Bill        Print Bill
-             │                               
-             │                           Delete Bill
-             │                                │
-             └──────────── SQLite ───────────┘
+Admin Login
+     ↓
+Dashboard
+     ↓
+ ┌───────────────┬───────────────┐
+ ↓               ↓
+Menu          Billing
+Management       ↓
+ ↓           Select Dishes
+Add / Edit /     ↓
+Delete /      Add to Cart
+Search            ↓
+              Calculate Total
+                   ↓
+                Save Bill
+                   ↓
+              Bill History
+                   ↓
+              Bill Details
+              ↙          ↘
+          Print          Delete
 ```
+
+---
+
+## 💾 Database
+
+The application uses **SQLite** for local data storage.
+
+The `DatabaseHelper.java` class is responsible for managing the SQLite database and performing database operations.
+
+SQLite is used to store application data such as:
+
+* Admin login information
+* Menu/dish information
+* Bill information
+* Bill items
+
+### Advantages of using SQLite
+
+* Local database
+* No separate database server required
+* Easy to integrate with Android
+* Suitable for small applications
+* Can work without continuous internet connectivity
+
 
 ---
 
 # 📸 Screenshots
 
-> Replace the placeholder image paths below with your actual screenshots.
->
-> Recommended approach: create a `screenshots` folder in the root of your GitHub repository and upload your images there.
+The following screenshots show the main features and working of the application.
 
 ## 🔐 Login Screen
 
@@ -272,66 +235,38 @@ bill_details
 
 ---
 
-# 📁 Recommended Screenshot Folder
+## ⚙️ Installation & Setup
 
-Create the following folder in your GitHub repository:
-
-```text
-screenshots/
-│
-├── login.png
-├── dashboard.png
-├── menu-management.png
-├── add-dish.png
-├── billing.png
-├── cart.png
-├── saved-bill.png
-├── bill-history.png
-├── bill-details.png
-├── delete-confirmation.png
-└── print-bill.png
-```
-
-Then the README automatically displays them using:
-
-```markdown
-![Login Screen](screenshots/login.png)
-```
-
----
-
-# ⚙️ Installation & Setup
-
-## 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/SirsodeRaj/Android-Hotel-Management-System.git
 ```
 
-## 2. Open in Android Studio
+### 2. Open in Android Studio
 
 Open the cloned project in **Android Studio**.
 
 Wait for Gradle synchronization to complete.
 
-## 3. Connect Android Device / Emulator
+### 3. Connect Android Device or Emulator
 
-You can use:
+You can run the application using:
 
 * Android Emulator
 * Physical Android smartphone
 
-Enable USB debugging if using a physical device.
+If using a physical device, enable USB debugging.
 
-## 4. Build the Project
+### 4. Build the Project
 
-In Android Studio:
+In Android Studio, select:
 
 ```text
 Build → Make Project
 ```
 
-## 5. Run the Application
+### 5. Run the Application
 
 Click:
 
@@ -339,159 +274,45 @@ Click:
 Run ▶
 ```
 
-and select your Android device/emulator.
+Select the connected emulator or Android device.
 
 ---
 
-# 🔑 Default Login
+## 🔑 Default Login
 
-The application currently uses a local SQLite administrator account.
+The current application uses a local SQLite administrator account.
 
 ```text
 Username: admin
 Password: 123
 ```
 
-> For production use, the default credentials should be changed and passwords should be stored securely rather than as plain text.
+> For a production application, default credentials should be changed and passwords should be stored securely.
 
 ---
 
-# 🧾 Billing Process
+## 📂 Main Modules
 
-The billing process works as follows:
-
-```text
-Customer Details
-       ↓
-Select Dish
-       ↓
-Set Quantity
-       ↓
-Add to Cart
-       ↓
-Calculate Amount
-       ↓
-Calculate Total
-       ↓
-Save Bill
-       ↓
-Bill History
-       ↓
-View Bill
-       ↓
-Print / Delete
-```
+| Module          | Description                    |
+| --------------- | ------------------------------ |
+| Login           | Admin authentication           |
+| Dashboard       | Main navigation and overview   |
+| Menu Management | Manage dishes and prices       |
+| Billing         | Create new bills               |
+| Cart            | Manage selected dishes         |
+| Bill History    | View previously saved bills    |
+| Bill Details    | View complete bill information |
+| Delete Bill     | Remove saved bills             |
+| Print Bill      | Print generated bills          |
+| Database        | Manage local SQLite data       |
 
 ---
 
-# 🖨️ Printing Process
-
-The application uses the Android printing framework.
-
-```text
-View Bill
-    ↓
-PRINT BILL
-    ↓
-Generate Printable Document
-    ↓
-Android Print System
-    ↓
-Select Available Printer
-    ↓
-Print
-```
-
-Compatible Wi-Fi printers can be selected through the Android print system when an appropriate print service is available.
-
----
-
-# 🔒 Data Storage
-
-The application stores data locally using SQLite.
-
-This means:
-
-* No external database server is required.
-* Data can be accessed while the application is installed.
-* Menu and billing data are stored locally on the device.
-* The application can operate without continuous internet connectivity.
-
----
-
-# 🎯 Project Objectives
-
-The main objectives of the project are:
-
-* To digitize basic hotel management operations.
-* To simplify menu management.
-* To automate bill calculation.
-* To maintain a history of generated bills.
-* To reduce manual billing errors.
-* To provide easy bill viewing and printing.
-* To store management data using a local database.
-* To provide a simple and user-friendly Android interface.
-
----
-
-# 🚀 Future Enhancements
-
-The project can be further enhanced with:
-
-* Firebase/cloud database synchronization
-* Multiple admin/staff accounts
-* Role-based access control
-* Customer management
-* Room management
-* Hotel room booking
-* Check-in/check-out management
-* Payment management
-* GST/tax calculation
-* Discount management
-* PDF bill generation
-* Thermal printer support
-* Dashboard statistics
-* Daily/monthly sales reports
-* Backup and restore
-* Cloud data synchronization
-
----
-
-# 👨‍💻 Developer
+## 👨‍💻 Developer
 
 **Raj Sirsode**
 
-B.Tech – AI & Data Science
-
----
-
-# 📌 Project Status
-
-🚧 **Currently in Development**
-
-### Completed
-
-* [x] Login System
-* [x] SQLite Database
-* [x] Dashboard
-* [x] Menu Management
-* [x] Dish Search
-* [x] Billing
-* [x] Cart Management
-* [x] Bill Saving
-* [x] Bill History
-* [x] Bill Details
-* [x] Bill Delete Confirmation
-* [x] Android Print Framework Integration
-
-### Planned / Future
-
-* [ ] Thermal Printer Support
-* [ ] Advanced Reports
-* [ ] Room Management
-* [ ] Customer Management
-* [ ] Cloud Database
-* [ ] Backup & Restore
+B.Tech – Artificial Intelligence & Data Science
 
 ---
 
@@ -500,27 +321,3 @@ B.Tech – AI & Data Science
 If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
 ````
-
-### Screenshot setup
-
-For your actual GitHub repository, I recommend this structure:
-
-```text
-Android-Hotel-Management-System
-│
-├── app/
-├── screenshots/          ← create this
-│   ├── login.png
-│   ├── dashboard.png
-│   ├── menu-management.png
-│   ├── billing.png
-│   ├── bill-history.png
-│   ├── bill-details.png
-│   ├── delete-confirmation.png
-│   └── print-bill.png
-│
-├── README.md
-└── ...
-````
-
-Then you only need to **replace the placeholder filenames with your actual screenshots**. You don't need to put the images directly inside the README. GitHub will render them automatically.
