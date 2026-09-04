@@ -3,87 +3,144 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="10dp"
+
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+
+    app:cardCornerRadius="12dp"
     app:cardElevation="3dp">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp">
 
-        <!-- Bill number -->
+        android:orientation="vertical"
+
+        android:padding="14dp">
+
+
+        <!-- CUSTOMER NAME -->
+
+        <TextView
+            android:id="@+id/tvCustomerName"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Sakshi"
+
+            android:textColor="#1A237E"
+            android:textSize="17sp"
+            android:textStyle="bold"
+
+            android:paddingBottom="8dp" />
+
+
+        <!-- BILL NUMBER -->
 
         <TextView
             android:id="@+id/tvHistoryBillNo"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:text="Bill No.: 1"
+
             android:textColor="#1A237E"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            android:paddingTop="2dp"
+            android:paddingBottom="4dp" />
 
 
-        <!-- Customer -->
+        <!-- CUSTOMER -->
 
         <TextView
             android:id="@+id/tvHistoryCustomer"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:text="Customer: Raj"
+
             android:textColor="#333333"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp" />
+            android:textSize="14sp"
+
+            android:paddingBottom="4dp" />
 
 
-        <!-- Date -->
+        <!-- DATE -->
 
         <TextView
             android:id="@+id/tvHistoryDate"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date: 24-08-2026"
+
+            android:text="Date: 31-08-2026 11:31"
+
             android:textColor="#666666"
             android:textSize="14sp"
-            android:layout_marginTop="3dp" />
+
+            android:paddingBottom="4dp" />
 
 
-        <!-- Total -->
+        <!-- TOTAL -->
 
         <TextView
             android:id="@+id/tvHistoryTotal"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total: ₹680.00"
+
+            android:text="Total: ₹360.00"
+
             android:textColor="#00897B"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginTop="5dp" />
+
+            android:paddingBottom="10dp" />
 
 
-        <!-- View button -->
+        <!-- VIEW BILL -->
 
         <Button
             android:id="@+id/btnViewBill"
+
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
+
             android:text="VIEW BILL"
+
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:backgroundTint="#1565C0"
-            android:layout_marginTop="10dp" />
+
+            android:backgroundTint="#1565C0" />
+
+
+        <!-- DELETE BILL -->
 
         <Button
             android:id="@+id/btnDeleteBill"
+
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
+
+            android:layout_marginTop="8dp"
+
             android:text="DELETE BILL"
-            android:textStyle="bold"
+
             android:textColor="#FFFFFF"
-            android:backgroundTint="#D32F2F"
-            android:layout_marginTop="8dp" />
+            android:textStyle="bold"
+
+            android:backgroundTint="#D32F2F" />
 
     </LinearLayout>
 

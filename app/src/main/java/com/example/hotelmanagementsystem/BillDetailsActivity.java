@@ -8,8 +8,10 @@ import android.print.PrintManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class BillDetailsActivity
         extends AppCompatActivity {
@@ -26,6 +28,8 @@ public class BillDetailsActivity
     TextView tvBillTotal;
 
     Button btnPrintBill;
+
+    private ImageButton btnBack;
 
 
     // =====================================================
@@ -64,6 +68,14 @@ public class BillDetailsActivity
         setContentView(
                 R.layout.activity_bill_details
         );
+
+        SystemBarHelper.setup(this);
+
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
 
 
         // =====================================================

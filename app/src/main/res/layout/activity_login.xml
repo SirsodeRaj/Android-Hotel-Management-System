@@ -4,142 +4,281 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="#F5F7FA"
+
     tools:context=".LoginActivity">
 
-    <!-- Main hotel title -->
+
+    <!-- ===================================================== -->
+    <!-- MAIN HOTEL TITLE -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvTitle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="HOTEL MANAGEMENT SYSTEM"
+
         android:textColor="#1A237E"
         android:textSize="26sp"
         android:textStyle="bold"
+        android:gravity="center"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginTop="90dp" />
 
-    <!-- Subtitle -->
+
+    <!-- ===================================================== -->
+    <!-- SUBTITLE -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvSubtitle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Management System"
+
         android:textColor="#666666"
         android:textSize="16sp"
+
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginTop="8dp" />
 
-    <!-- Login heading -->
+
+    <!-- ===================================================== -->
+    <!-- LOGIN HEADING -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvLogin"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Login"
+
         android:textColor="#222222"
         android:textSize="24sp"
         android:textStyle="bold"
+
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginTop="45dp" />
 
-    <!-- Username -->
+
+    <!-- ===================================================== -->
+    <!-- USERNAME -->
+    <!-- ===================================================== -->
+
+
+    <!-- ===================================================== -->
+    <!-- PASSWORD WITH EYE BUTTON -->
+    <!-- ===================================================== -->
+
     <EditText
         android:id="@+id/etUsername"
+
         android:layout_width="0dp"
         android:layout_height="55dp"
+
+        android:layout_marginStart="35dp"
+
+        android:layout_marginTop="24dp"
+
+        android:layout_marginEnd="35dp"
+
+        android:backgroundTint="#1A237E"
+
         android:hint="Username"
+
         android:inputType="text"
         android:padding="15dp"
-        android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginTop="25dp" />
+        android:textSize="16sp"
 
-    <!-- Password -->
-    <EditText
-        android:id="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogin" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordInputLayout"
+
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:backgroundTint="#1A237E"
+
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="15dp"
+
+        app:endIconMode="password_toggle"
+        app:endIconTint="#1A237E"
+
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#1A237E"
+
         app:layout_constraintTop_toBottomOf="@id/etUsername"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginTop="15dp" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Login button -->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:hint="Password"
+
+            android:inputType="textPassword"
+
+            android:paddingStart="15dp"
+            android:paddingEnd="8dp"
+
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- ===================================================== -->
+    <!-- REMEMBER ME -->
+    <!-- ===================================================== -->
+
+    <CheckBox
+        android:id="@+id/cbRememberMe"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Remember me"
+
+        android:textColor="#333333"
+        android:textSize="14sp"
+
+        android:buttonTint="#1A237E"
+
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="5dp" />
+
+
+    <!-- ===================================================== -->
+    <!-- LOGIN BUTTON -->
+    <!-- ===================================================== -->
+
     <Button
         android:id="@+id/btnLogin"
+
         android:layout_width="0dp"
         android:layout_height="55dp"
+
         android:text="LOGIN"
+
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
+
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
+
+        app:layout_constraintTop_toBottomOf="@id/cbRememberMe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="10dp" />
 
-    <!-- Forgot password -->
+
+    <!-- ===================================================== -->
+    <!-- FORGOT PASSWORD -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvForgotPassword"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Forgot Password?"
+
         android:textColor="#1A237E"
         android:textSize="14sp"
+        android:textStyle="bold"
+
         android:clickable="true"
         android:focusable="true"
+
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginEnd="40dp"
         android:layout_marginTop="15dp" />
 
-    <!-- Register -->
+
+    <!-- ===================================================== -->
+    <!-- REGISTER -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvRegister"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="New user? Register"
+
         android:textColor="#1A237E"
         android:textSize="14sp"
+        android:textStyle="bold"
+
         android:clickable="true"
         android:focusable="true"
+
         app:layout_constraintTop_toBottomOf="@id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
+
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp" />
 
-    <!-- Developer text -->
+
+    <!-- ===================================================== -->
+    <!-- DEVELOPER -->
+    <!-- ===================================================== -->
+
     <TextView
         android:id="@+id/tvDeveloper"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Developed by Raj Sirsode"
+
         android:textColor="#777777"
         android:textSize="12sp"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         android:layout_marginBottom="25dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

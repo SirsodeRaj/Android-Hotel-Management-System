@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,8 @@ public class BillingActivity extends AppCompatActivity {
     Button btnDeleteItem;
     Button btnSaveBill;
 
+    ImageButton btnBack;
+
     // RecyclerViews
     RecyclerView recyclerDishSearch;
     RecyclerView recyclerCart;
@@ -66,6 +69,8 @@ public class BillingActivity extends AppCompatActivity {
 
         // Connect Java with XML
         setContentView(R.layout.activity_billing);
+
+        SystemBarHelper.setup(this);
 
 
         // =====================================================
@@ -126,6 +131,16 @@ public class BillingActivity extends AppCompatActivity {
         btnSaveBill =
                 findViewById(R.id.btnSaveBill);
 
+        btnBack =
+                findViewById(R.id.btnBack);
+
+        // =====================================================
+        // BACK BUTTON
+        // =====================================================
+
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
 
         // =====================================================
         // RECYCLERVIEWS
@@ -880,4 +895,5 @@ public class BillingActivity extends AppCompatActivity {
                 format.format(new Date())
         );
     }
+
 }

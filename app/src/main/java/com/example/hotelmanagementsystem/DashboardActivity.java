@@ -20,6 +20,8 @@ public class DashboardActivity extends AppCompatActivity {
         // Connect Java with dashboard XML
         setContentView(R.layout.activity_dashboard);
 
+        SystemBarHelper.setup(this);
+
         // Connect buttons
         btnMenu = findViewById(R.id.btnMenu);
         btnBilling = findViewById(R.id.btnBilling);

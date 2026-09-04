@@ -60,9 +60,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        // -------------------------------------------------
+        // =================================================
         // USERS TABLE
-        // -------------------------------------------------
+        // =================================================
 
         String createUsersTable =
                 "CREATE TABLE " + TABLE_USERS + " (" +
@@ -75,9 +75,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createUsersTable);
 
 
-        // -------------------------------------------------
+        // =================================================
         // DISHES TABLE
-        // -------------------------------------------------
+        // =================================================
 
         String createDishesTable =
                 "CREATE TABLE " + TABLE_DISHES + " (" +
@@ -89,9 +89,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createDishesTable);
 
 
-        // -------------------------------------------------
+        // =================================================
         // BILLS TABLE
-        // -------------------------------------------------
+        // =================================================
 
         String createBillsTable =
                 "CREATE TABLE " + TABLE_BILLS + " (" +
@@ -105,9 +105,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createBillsTable);
 
 
-        // -------------------------------------------------
+        // =================================================
         // BILL DETAILS TABLE
-        // -------------------------------------------------
+        // =================================================
 
         String createBillDetailsTable =
                 "CREATE TABLE " +
@@ -123,9 +123,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createBillDetailsTable);
 
 
-        // -------------------------------------------------
+        // =================================================
         // DEFAULT ADMIN ACCOUNT
-        // -------------------------------------------------
+        // =================================================
 
         ContentValues values =
                 new ContentValues();
@@ -163,15 +163,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int oldVersion,
             int newVersion) {
 
-        // -------------------------------------------------
+        // =================================================
         // VERSION 2
         // Add dishes table
-        // -------------------------------------------------
+        // =================================================
 
         if (oldVersion < 2) {
 
             String createDishesTable =
-                    "CREATE TABLE IF NOT EXISTS dishes (" +
+                    "CREATE TABLE IF NOT EXISTS " +
+                            TABLE_DISHES + " (" +
                             "dish_no INTEGER PRIMARY KEY AUTOINCREMENT, " +
                             "dish_name TEXT NOT NULL, " +
                             "dish_price REAL NOT NULL" +
@@ -181,11 +182,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
 
-        // -------------------------------------------------
+        // =================================================
         // VERSION 3
         // Change admin password
         // admin123 -> 123
-        // -------------------------------------------------
+        // =================================================
 
         if (oldVersion < 3) {
 
@@ -208,16 +209,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
 
-        // -------------------------------------------------
+        // =================================================
         // VERSION 4
         // Add billing tables
-        // -------------------------------------------------
+        // =================================================
 
         if (oldVersion < 4) {
 
+            // -------------------------------------------------
             // Bills table
+            // -------------------------------------------------
+
             String createBillsTable =
-                    "CREATE TABLE IF NOT EXISTS bills (" +
+                    "CREATE TABLE IF NOT EXISTS " +
+                            TABLE_BILLS + " (" +
                             "bill_no INTEGER PRIMARY KEY, " +
                             "bill_date TEXT NOT NULL, " +
                             "customer_name TEXT NOT NULL, " +
@@ -228,9 +233,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(createBillsTable);
 
 
+            // -------------------------------------------------
             // Bill details table
+            // -------------------------------------------------
+
             String createBillDetailsTable =
-                    "CREATE TABLE IF NOT EXISTS bill_details (" +
+                    "CREATE TABLE IF NOT EXISTS " +
+                            TABLE_BILL_DETAILS + " (" +
                             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                             "bill_no INTEGER NOT NULL, " +
                             "dish_name TEXT NOT NULL, " +
@@ -278,6 +287,77 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     // =====================================================
+    // REGISTER USER
+    // =====================================================
+
+    public boolean registerUser(
+            String username,
+            String email,
+            String password) {
+
+        SQLiteDatabase db =
+                this.getWritableDatabase();
+
+        ContentValues values =
+                new ContentValues();
+
+        values.put(
+                "username",
+                username
+        );
+
+        values.put(
+                "email",
+                email
+        );
+
+        values.put(
+                "password",
+                password
+        );
+
+        long result =
+                db.insert(
+                        TABLE_USERS,
+                        null,
+                        values
+                );
+
+        return result != -1;
+    }
+
+
+    // =====================================================
+    // CHECK USERNAME
+    // =====================================================
+
+    public boolean checkUsernameExists(
+            String username) {
+
+        SQLiteDatabase db =
+                this.getReadableDatabase();
+
+        Cursor cursor =
+                db.rawQuery(
+                        "SELECT id FROM " +
+                                TABLE_USERS +
+                                " WHERE username = ?",
+
+                        new String[]{
+                                username
+                        }
+                );
+
+        boolean exists =
+                cursor.moveToFirst();
+
+        cursor.close();
+
+        return exists;
+    }
+
+
+    // =====================================================
     // ADD DISH
     // Returns TRUE if successful
     // =====================================================
@@ -309,7 +389,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         values
                 );
 
-        // -1 means insertion failed
         return result != -1;
     }
 
@@ -350,7 +429,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         }
                 );
 
-        // More than 0 rows updated = success
         return result > 0;
     }
 
@@ -375,7 +453,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         }
                 );
 
-        // More than 0 rows deleted = success
         return result > 0;
     }
 
@@ -442,7 +519,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
 
-            // Check if there is already a bill
             if (!cursor.isNull(0)) {
 
                 nextBillNumber =
@@ -471,14 +547,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db =
                 this.getWritableDatabase();
 
-        // Start transaction
         db.beginTransaction();
 
         try {
 
-            // -------------------------------------------------
+            // =================================================
             // SAVE MAIN BILL
-            // -------------------------------------------------
+            // =================================================
 
             ContentValues billValues =
                     new ContentValues();
@@ -515,17 +590,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                             billValues
                     );
 
-
-            // Main bill failed
             if (billResult == -1) {
-
                 return false;
             }
 
 
-            // -------------------------------------------------
-            // SAVE EACH CART ITEM
-            // -------------------------------------------------
+            // =================================================
+            // SAVE CART ITEMS
+            // =================================================
 
             for (CartItem item : cartList) {
 
@@ -557,7 +629,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         item.getAmount()
                 );
 
-
                 long detailResult =
                         db.insert(
                                 TABLE_BILL_DETAILS,
@@ -565,26 +636,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 detailValues
                         );
 
-
-                // Item failed
                 if (detailResult == -1) {
-
                     return false;
                 }
             }
 
 
-            // Everything was saved
+            // =================================================
+            // COMPLETE
+            // =================================================
+
             db.setTransactionSuccessful();
 
             return true;
 
         } finally {
 
-            // Finish transaction
             db.endTransaction();
         }
     }
+
 
     // =====================================================
     // GET ALL SAVED BILLS
@@ -596,24 +667,88 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 this.getReadableDatabase();
 
         return db.rawQuery(
-                "SELECT * FROM bills " +
-                        "ORDER BY bill_no DESC",
+                "SELECT * FROM " +
+                        TABLE_BILLS +
+                        " ORDER BY bill_no DESC",
                 null
         );
     }
 
+
     // =====================================================
-    // GET DETAILS OF ONE BILL
+    // SEARCH BILLS
+    //
+    // Searches:
+    // 1. Customer name
+    // 2. Bill number
+    // 3. Mobile number
+    // 4. Bill date
+    // 5. Total amount
+    // 6. Dish name inside bill
     // =====================================================
 
-    public Cursor getBillDetails(int billNo) {
+    public Cursor searchBills(
+            String searchText) {
 
         SQLiteDatabase db =
                 this.getReadableDatabase();
 
         return db.rawQuery(
-                "SELECT * FROM bill_details " +
-                        "WHERE bill_no = ? " +
+
+                "SELECT DISTINCT b.* " +
+                        "FROM " +
+                        TABLE_BILLS + " b " +
+
+                        "LEFT JOIN " +
+                        TABLE_BILL_DETAILS + " bd " +
+
+                        "ON b.bill_no = bd.bill_no " +
+
+                        "WHERE " +
+
+                        "CAST(b.bill_no AS TEXT) LIKE ? " +
+
+                        "OR b.customer_name LIKE ? " +
+
+                        "OR b.mobile_no LIKE ? " +
+
+                        "OR b.bill_date LIKE ? " +
+
+                        "OR CAST(b.total_bill AS TEXT) LIKE ? " +
+
+                        "OR bd.dish_name LIKE ? " +
+
+                        "ORDER BY b.bill_no DESC",
+
+                new String[]{
+                        "%" + searchText + "%",
+                        "%" + searchText + "%",
+                        "%" + searchText + "%",
+                        "%" + searchText + "%",
+                        "%" + searchText + "%",
+                        "%" + searchText + "%"
+                }
+        );
+    }
+
+
+    // =====================================================
+    // GET DETAILS OF ONE BILL
+    // =====================================================
+
+    public Cursor getBillDetails(
+            int billNo) {
+
+        SQLiteDatabase db =
+                this.getReadableDatabase();
+
+        return db.rawQuery(
+
+                "SELECT * FROM " +
+                        TABLE_BILL_DETAILS +
+
+                        " WHERE bill_no = ? " +
+
                         "ORDER BY id ASC",
 
                 new String[]{
@@ -622,48 +757,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
     }
 
-    // =====================================================
-// DELETE BILL
-// Deletes bill and all its items
-// =====================================================
 
-    public boolean deleteBill(int billNo) {
+    // =====================================================
+    // DELETE BILL
+    //
+    // Deletes:
+    // 1. All bill items
+    // 2. Main bill
+    //
+    // Both operations happen inside
+    // one transaction.
+    // =====================================================
+
+    public boolean deleteBill(
+            int billNo) {
 
         SQLiteDatabase db =
                 this.getWritableDatabase();
 
-        // Start transaction so both deletes happen together
         db.beginTransaction();
 
         try {
 
-            // Delete bill items first
+            // -------------------------------------------------
+            // Delete bill items
+            // -------------------------------------------------
+
             db.delete(
-                    "bill_details",
+                    TABLE_BILL_DETAILS,
                     "bill_no = ?",
                     new String[]{
                             String.valueOf(billNo)
                     }
             );
 
+
+            // -------------------------------------------------
             // Delete main bill
+            // -------------------------------------------------
+
             int deletedRows =
                     db.delete(
-                            "bills",
+                            TABLE_BILLS,
                             "bill_no = ?",
                             new String[]{
                                     String.valueOf(billNo)
                             }
                     );
 
-            // Everything succeeded
+
+            // -------------------------------------------------
+            // Success
+            // -------------------------------------------------
+
             db.setTransactionSuccessful();
 
             return deletedRows > 0;
 
         } finally {
 
-            // Finish transaction
             db.endTransaction();
         }
     }

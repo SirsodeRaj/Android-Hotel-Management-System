@@ -1,63 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#F5F7FA">
 
 
-    <!-- Header -->
+    <!-- =====================================================
+         TOOLBAR
+         ===================================================== -->
 
-    <TextView
-        android:id="@+id/tvBillHistoryTitle"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+    <LinearLayout
+        android:id="@+id/billHistoryToolbar"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:background="#1A237E"
-        android:gravity="center"
-        android:text="BILL HISTORY"
-        android:textColor="#FFFFFF"
-        android:textSize="21sp"
-        android:textStyle="bold" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
-    <!-- Description -->
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#FFFFFF"
+            android:contentDescription="Back" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="BILL HISTORY"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <View
+            android:layout_width="52dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <!-- =====================================================
+         SEARCH BAR
+         ===================================================== -->
+
+    <EditText
+        android:id="@+id/etBillSearch"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="#1A237E"
+        android:hint="Search bill, customer, item..."
+        android:inputType="text"
+        android:singleLine="true"
+        android:padding="12dp"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/billHistoryToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- =====================================================
+         SECTION TITLE
+         ===================================================== -->
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvPreviouslySaved"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:text="Previously Saved Bills"
-        android:textColor="#333333"
+        android:textColor="#222222"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:paddingStart="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/etBillSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Bill list -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBillHistory"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:clipToPadding="false" />
-
-
-    <!-- Empty message -->
+    <!-- =====================================================
+         NO BILLS
+         ===================================================== -->
 
     <TextView
         android:id="@+id/tvNoBills"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="No saved bills found."
+        android:gravity="center"
+        android:text="No bills found."
         android:textColor="#777777"
         android:textSize="16sp"
-        android:gravity="center"
         android:visibility="gone"
-        android:padding="30dp" />
+        app:layout_constraintTop_toBottomOf="@id/tvPreviouslySaved"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+
+    <!-- =====================================================
+         BILL LIST
+         ===================================================== -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBillHistory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="5dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tvPreviouslySaved"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

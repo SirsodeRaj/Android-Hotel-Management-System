@@ -7,52 +7,101 @@
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
-    <!-- Page title -->
-    <TextView
-        android:id="@+id/tvMenuTitle"
+
+    <!-- =====================================================
+         TOP TOOLBAR
+         ===================================================== -->
+
+    <LinearLayout
+        android:id="@+id/menuToolbar"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:background="#1A237E"
-        android:gravity="center"
-        android:text="MENU"
-        android:textColor="#FFFFFF"
-        android:textSize="21sp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Search box -->
+        <!-- BACK BUTTON -->
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#FFFFFF"
+            android:contentDescription="Back" />
+
+
+        <!-- TITLE -->
+
+        <TextView
+            android:id="@+id/tvMenuTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="MENU"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <!-- RIGHT SPACE -->
+
+        <View
+            android:layout_width="56dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <!-- =====================================================
+         SEARCH BOX
+         ===================================================== -->
+
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:hint="Search dish..."
         android:inputType="text"
+        android:singleLine="true"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvMenuTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/menuToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Dish list -->
+
+    <!-- =====================================================
+         DISH LIST
+         ===================================================== -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDishes"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="5dp"
         android:clipToPadding="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintTop_toBottomOf="@id/etSearch"
         app:layout_constraintBottom_toTopOf="@id/tvFormTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Form heading -->
+
+    <!-- =====================================================
+         FORM TITLE
+         ===================================================== -->
+
     <TextView
         android:id="@+id/tvFormTitle"
         android:layout_width="wrap_content"
@@ -61,56 +110,70 @@
         android:textColor="#222222"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/etDishName"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/etDishName"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Dish name -->
+
+    <!-- =====================================================
+         DISH NAME
+         ===================================================== -->
+
     <EditText
         android:id="@+id/etDishName"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:hint="Dish Name"
         android:inputType="textCapWords"
+        android:singleLine="true"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintBottom_toTopOf="@id/etDishPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/etDishPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Dish price -->
+
+    <!-- =====================================================
+         DISH PRICE
+         ===================================================== -->
+
     <EditText
         android:id="@+id/etDishPrice"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:hint="Dish Price"
         android:inputType="numberDecimal"
+        android:singleLine="true"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintBottom_toTopOf="@id/buttonRow1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Add and Update -->
+
+    <!-- =====================================================
+         ADD + UPDATE
+         ===================================================== -->
+
     <LinearLayout
         android:id="@+id/buttonRow1"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintBottom_toTopOf="@id/buttonRow2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnAdd"
@@ -133,19 +196,23 @@
 
     </LinearLayout>
 
-    <!-- Delete and Clear -->
+
+    <!-- =====================================================
+         DELETE + CLEAR
+         ===================================================== -->
+
     <LinearLayout
         android:id="@+id/buttonRow2"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnDelete"

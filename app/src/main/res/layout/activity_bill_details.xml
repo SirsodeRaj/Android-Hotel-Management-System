@@ -1,162 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
+
+    <!-- =====================================================
+         TOP TOOLBAR
+         ===================================================== -->
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="18dp">
+        android:id="@+id/billDetailsToolbar"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#1A237E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- BACK BUTTON -->
 
-        <!-- Hotel heading -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HOTEL MANAGEMENT SYSTEM"
-            android:textColor="#1A237E"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="10dp" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BILL"
-            android:textColor="#555555"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingBottom="15dp" />
-
-
-        <!-- Bill number -->
-
-        <TextView
-            android:id="@+id/tvBillNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bill No.: 1"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#222222"
-            android:padding="5dp" />
-
-
-        <!-- Date -->
-
-        <TextView
-            android:id="@+id/tvBillDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date:"
-            android:textSize="15sp"
-            android:textColor="#555555"
-            android:padding="5dp" />
-
-
-        <!-- Customer -->
-
-        <TextView
-            android:id="@+id/tvCustomerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Customer:"
-            android:textSize="15sp"
-            android:textColor="#333333"
-            android:padding="5dp" />
-
-
-        <!-- Mobile -->
-
-        <TextView
-            android:id="@+id/tvMobileNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mobile:"
-            android:textSize="15sp"
-            android:textColor="#333333"
-            android:padding="5dp" />
-
-
-        <!-- Divider -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#999999"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp" />
-
-
-        <!-- Items heading -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ITEMS"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="#1A237E"
-            android:padding="5dp" />
-
-
-        <!-- Bill items -->
-
-        <TextView
-            android:id="@+id/tvBillItems"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="No items found."
-            android:textSize="15sp"
-            android:textColor="#333333"
-            android:padding="8dp" />
-
-
-        <!-- Divider -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#999999"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp" />
-
-
-        <!-- Total -->
-
-        <TextView
-            android:id="@+id/tvBillTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TOTAL: ₹0.00"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#00897B"
-            android:gravity="end"
-            android:padding="8dp" />
-
-
-        <!-- Print -->
-
-        <Button
-            android:id="@+id/btnPrintBill"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="52dp"
             android:layout_height="52dp"
-            android:text="PRINT BILL"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#FFFFFF"
+            android:contentDescription="Back" />
+
+
+        <!-- TITLE -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="HOTEL MANAGEMENT SYSTEM"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#1565C0"
-            android:layout_marginTop="20dp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <!-- RIGHT SPACE -->
+
+        <View
+            android:layout_width="56dp"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
-</ScrollView>
+
+    <!-- =====================================================
+         SCROLLABLE BILL CONTENT
+         ===================================================== -->
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/billDetailsToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+
+            <!-- =================================================
+                 HOTEL HEADING
+                 ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BILL"
+                android:textColor="#1A237E"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:padding="10dp" />
+
+
+
+
+
+            <!-- =================================================
+                 BILL INFORMATION
+                 ================================================= -->
+
+            <TextView
+                android:id="@+id/tvBillNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bill No.: 1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tvBillDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textSize="15sp"
+                android:textColor="#555555"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tvCustomerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Customer:"
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tvMobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile:"
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:padding="5dp" />
+
+
+            <!-- DIVIDER -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#999999"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp" />
+
+
+            <!-- =================================================
+                 ITEMS
+                 ================================================= -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ITEMS"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tvBillItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No items found."
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:padding="8dp" />
+
+
+            <!-- DIVIDER -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#999999"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp" />
+
+
+            <!-- =================================================
+                 TOTAL
+                 ================================================= -->
+
+            <TextView
+                android:id="@+id/tvBillTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TOTAL: ₹0.00"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#00897B"
+                android:gravity="end"
+                android:padding="8dp" />
+
+
+            <!-- =================================================
+                 PRINT BILL
+                 ================================================= -->
+
+            <Button
+                android:id="@+id/btnPrintBill"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="PRINT BILL"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1565C0"
+                android:layout_marginTop="20dp" />
+
+
+            <!-- DEVELOPER -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developed by Raj Sirsode"
+                android:textColor="#777777"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

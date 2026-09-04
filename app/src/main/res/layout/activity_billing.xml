@@ -7,28 +7,61 @@
     android:layout_height="match_parent"
     android:background="#F5F7FA">
 
-    <!-- =========================
-         BILLING HEADER
-         ========================= -->
 
-    <TextView
-        android:id="@+id/tvBillingTitle"
+    <!-- =====================================================
+         TOP TOOLBAR
+         ===================================================== -->
+
+    <LinearLayout
+        android:id="@+id/billingToolbar"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:background="#1A237E"
-        android:gravity="center"
-        android:text="BILLING"
-        android:textColor="#FFFFFF"
-        android:textSize="21sp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- BACK BUTTON -->
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Back"
+            android:tint="#FFFFFF" />
 
 
-    <!-- =========================
+        <!-- TITLE -->
+
+        <TextView
+            android:id="@+id/tvBillingTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="BILLING"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <!-- RIGHT SPACE -->
+
+        <View
+            android:layout_width="56dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <!-- =====================================================
          BILL INFORMATION
-         ========================= -->
+         ===================================================== -->
 
     <TextView
         android:id="@+id/tvBillInfo"
@@ -38,13 +71,13 @@
         android:textColor="#222222"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvBillingTitle"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/billingToolbar"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <!-- Bill number -->
+    <!-- BILL NUMBER -->
 
     <TextView
         android:id="@+id/tvBillNo"
@@ -56,15 +89,15 @@
         android:text="Bill No.: 1"
         android:textColor="#333333"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvBillDate"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvBillDate" />
 
 
-    <!-- Bill date -->
+    <!-- BILL DATE -->
 
     <TextView
         android:id="@+id/tvBillDate"
@@ -76,17 +109,17 @@
         android:text="Date"
         android:textColor="#333333"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
-        app:layout_constraintStart_toEndOf="@id/tvBillNo"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillInfo"
+        app:layout_constraintStart_toEndOf="@id/tvBillNo"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
+    <!-- =====================================================
          CUSTOMER INFORMATION
-         ========================= -->
+         ===================================================== -->
 
     <EditText
         android:id="@+id/etCustomerName"
@@ -96,12 +129,13 @@
         android:inputType="textCapWords"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/etMobileNo"
+        android:singleLine="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/etMobileNo" />
 
 
     <EditText
@@ -113,17 +147,18 @@
         android:maxLength="10"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
-        app:layout_constraintStart_toEndOf="@id/etCustomerName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:singleLine="true"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBillNo"
+        app:layout_constraintStart_toEndOf="@id/etCustomerName"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
+    <!-- =====================================================
          DISH SECTION
-         ========================= -->
+         ===================================================== -->
 
     <TextView
         android:id="@+id/tvDishSection"
@@ -133,13 +168,13 @@
         android:textColor="#222222"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/etCustomerName"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etCustomerName"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <!-- Search dish -->
+    <!-- SEARCH DISH -->
 
     <EditText
         android:id="@+id/etDishSearch"
@@ -149,15 +184,16 @@
         android:inputType="text"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvDishSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:singleLine="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDishSection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Search results -->
+    <!-- SEARCH RESULTS -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDishSearch"
@@ -166,15 +202,17 @@
         android:visibility="gone"
         android:background="#FFFFFF"
         android:padding="2dp"
-        app:layout_constraintTop_toBottomOf="@id/etDishSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false"
+        android:elevation="4dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="3dp" />
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/etDishSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Selected dish -->
+    <!-- SELECTED DISH -->
 
     <TextView
         android:id="@+id/tvSelectedDish"
@@ -186,15 +224,15 @@
         android:text="Selected Dish: None"
         android:textColor="#333333"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvSelectedPrice"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvSelectedPrice" />
 
 
-    <!-- Selected price -->
+    <!-- SELECTED PRICE -->
 
     <TextView
         android:id="@+id/tvSelectedPrice"
@@ -206,17 +244,17 @@
         android:text="Price: ₹0.00"
         android:textColor="#333333"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
-        app:layout_constraintStart_toEndOf="@id/tvSelectedDish"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerDishSearch"
+        app:layout_constraintStart_toEndOf="@id/tvSelectedDish"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
-         QUANTITY AND AMOUNT
-         ========================= -->
+    <!-- =====================================================
+         QUANTITY / AMOUNT
+         ===================================================== -->
 
     <EditText
         android:id="@+id/etQuantity"
@@ -226,12 +264,13 @@
         android:inputType="number"
         android:padding="12dp"
         android:backgroundTint="#1A237E"
-        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvAmount"
+        android:singleLine="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvAmount" />
 
 
     <TextView
@@ -244,17 +283,17 @@
         android:text="Amount: ₹0.00"
         android:textColor="#333333"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
-        app:layout_constraintStart_toEndOf="@id/etQuantity"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectedDish"
+        app:layout_constraintStart_toEndOf="@id/etQuantity"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
+    <!-- =====================================================
          ADD TO CART
-         ========================= -->
+         ===================================================== -->
 
     <Button
         android:id="@+id/btnAddToCart"
@@ -263,17 +302,17 @@
         android:text="ADD TO CART"
         android:textStyle="bold"
         android:backgroundTint="#2E7D32"
-        app:layout_constraintTop_toBottomOf="@id/etQuantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/etQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
-         CART
-         ========================= -->
+    <!-- =====================================================
+         CART TITLE
+         ===================================================== -->
 
     <TextView
         android:id="@+id/tvCartTitle"
@@ -283,11 +322,15 @@
         android:textColor="#222222"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btnAddToCart"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/btnAddToCart"
+        app:layout_constraintStart_toStartOf="parent" />
 
+
+    <!-- =====================================================
+         CART
+         ===================================================== -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCart"
@@ -295,19 +338,19 @@
         android:layout_height="0dp"
         android:padding="4dp"
         android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
-        app:layout_constraintBottom_toTopOf="@id/tvTotal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
+        app:layout_constraintBottom_toTopOf="@id/tvTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
+    <!-- =====================================================
          TOTAL
-         ========================= -->
+         ===================================================== -->
 
     <TextView
         android:id="@+id/tvTotal"
@@ -320,17 +363,17 @@
         android:textColor="#1A237E"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/buttonRow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- =========================
+    <!-- =====================================================
          BOTTOM BUTTONS
-         ========================= -->
+         ===================================================== -->
 
     <LinearLayout
         android:id="@+id/buttonRow"
@@ -338,12 +381,12 @@
         android:layout_height="48dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnDeleteItem"

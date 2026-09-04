@@ -16,7 +16,6 @@ public class BillAdapter
 
     private ArrayList<Bill> billList;
 
-
     // =====================================================
     // VIEW BILL LISTENER
     // =====================================================
@@ -83,7 +82,7 @@ public class BillAdapter
 
 
     // =====================================================
-    // DISPLAY BILL
+    // BIND BILL DATA
     // =====================================================
 
     @Override
@@ -95,23 +94,48 @@ public class BillAdapter
                 billList.get(position);
 
 
+        // =================================================
+        // CUSTOMER NAME
+        // =================================================
+
+        holder.tvCustomerName.setText(
+                bill.getCustomerName()
+        );
+
+
+        // =================================================
+        // BILL NUMBER
+        // =================================================
+
         holder.tvBillNo.setText(
                 "Bill No.: " +
                         bill.getBillNo()
         );
 
 
-        holder.tvCustomerName.setText(
+        // =================================================
+        // CUSTOMER
+        // =================================================
+
+        holder.tvCustomerNameDetails.setText(
                 "Customer: " +
                         bill.getCustomerName()
         );
 
+
+        // =================================================
+        // DATE
+        // =================================================
 
         holder.tvBillDate.setText(
                 "Date: " +
                         bill.getBillDate()
         );
 
+
+        // =================================================
+        // TOTAL
+        // =================================================
 
         holder.tvBillTotal.setText(
                 "Total: ₹" +
@@ -122,9 +146,9 @@ public class BillAdapter
         );
 
 
-        // -------------------------------------------------
+        // =================================================
         // VIEW BILL
-        // -------------------------------------------------
+        // =================================================
 
         holder.btnViewBill.setOnClickListener(v -> {
 
@@ -135,9 +159,9 @@ public class BillAdapter
         });
 
 
-        // -------------------------------------------------
+        // =================================================
         // DELETE BILL
-        // -------------------------------------------------
+        // =================================================
 
         holder.btnDeleteBill.setOnClickListener(v -> {
 
@@ -150,7 +174,7 @@ public class BillAdapter
 
 
     // =====================================================
-    // NUMBER OF BILLS
+    // ITEM COUNT
     // =====================================================
 
     @Override
@@ -167,12 +191,18 @@ public class BillAdapter
     public static class BillViewHolder
             extends RecyclerView.ViewHolder {
 
-        TextView tvBillNo;
         TextView tvCustomerName;
+
+        TextView tvBillNo;
+
+        TextView tvCustomerNameDetails;
+
         TextView tvBillDate;
+
         TextView tvBillTotal;
 
         Button btnViewBill;
+
         Button btnDeleteBill;
 
 
@@ -182,36 +212,49 @@ public class BillAdapter
             super(itemView);
 
 
+            // Customer heading
+            tvCustomerName =
+                    itemView.findViewById(
+                            R.id.tvCustomerName
+                    );
+
+
+            // Bill number
             tvBillNo =
                     itemView.findViewById(
                             R.id.tvHistoryBillNo
                     );
 
 
-            tvCustomerName =
+            // Customer details
+            tvCustomerNameDetails =
                     itemView.findViewById(
                             R.id.tvHistoryCustomer
                     );
 
 
+            // Date
             tvBillDate =
                     itemView.findViewById(
                             R.id.tvHistoryDate
                     );
 
 
+            // Total
             tvBillTotal =
                     itemView.findViewById(
                             R.id.tvHistoryTotal
                     );
 
 
+            // View button
             btnViewBill =
                     itemView.findViewById(
                             R.id.btnViewBill
                     );
 
 
+            // Delete button
             btnDeleteBill =
                     itemView.findViewById(
                             R.id.btnDeleteBill

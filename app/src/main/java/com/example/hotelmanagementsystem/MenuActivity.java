@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     Button btnUpdate;
     Button btnDelete;
     Button btnClear;
-
+    private ImageButton btnBack;
     RecyclerView recyclerDishes;
 
     DatabaseHelper databaseHelper;
@@ -42,6 +43,14 @@ public class MenuActivity extends AppCompatActivity {
 
         // Connect Java with XML
         setContentView(R.layout.activity_menu);
+
+        SystemBarHelper.setup(this);
+
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
 
         // Connect views
         etSearch = findViewById(R.id.etSearch);
